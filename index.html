@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>第一届货代高手等级考试</title>
+<meta name="viewport" content="width=640,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link href="css/index.css" rel="stylesheet" />
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/jq/jquery-2.1.4.min.js"></script>	
+<script>
+
+wx.config({
+    debug:false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId:'{$appId}', // 必填，公众号的唯一标识
+    timestamp:'{$timestamp}', // 必填，生成签名的时间戳
+    nonceStr:'{$nonceStr}', // 必填，生成签名的随机串
+    signature:'{$signature}',// 必填，签名，见附录1
+    jsApiList:['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone'] 
+    // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+
+var img_arr=["img/answer-arrow.png","img/arrow.png","img/bar.png","img/bengin-bg.png","img/blackboard.png","img/captain.png","img/card-img01.png","img/li.png","img/msg.png","img/over.png","img/paper01.png","img/paper02.png","img/person.png","img/s-bg.png","img/score_bg.png","img/score-c.png","img/ship.png","img/shiper.png","img/theme.png","img/v-bg.png","img/v-bg-bottom.png","img/v-card.png","img/share.jpg"
+];
+
+$(function(){
+    var wH=$(window).height();
+    if(wH>960){
+        $('.page').css({'min-height':wH});
+    }
+});
+wx.ready(function(){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	wx.onMenuShareTimeline({
+		title:'第一届货代高手等级考试', // 分享标题
+		link:'http://www.sofreight.com/Static/Weixin/index.html', // 分享链接
+		imgUrl:'img/share.jpg', // 分享图标
+		success: function () { 
+		    // 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		    // 用户取消分享后执行的回调函数
+		}
+	});
+
+    wx.onMenuShareAppMessage({
+        title: '第一届货代高手等级考试', // 分享标题
+        desc: '做题嘞，最重要的就是开心(^ω^)', // 分享描述
+        link: 'http://www.sofreight.com/Static/Weixin/index.html', // 分享链接
+        imgUrl: 'img/share.jpg', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () { 
+            // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+    });
+    wx.onMenuShareQQ({
+        title: '第一届货代高手等级考试', // 分享标题
+        desc: '做题嘞，最重要的就是开心(^ω^)', // 分享描述
+        link: 'http://www.sofreight.com/Static/Weixin/index.html', // 分享链接
+        imgUrl: 'img/share.jpg', // 分享图标
+        success: function () { 
+           // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+           // 用户取消分享后执行的回调函数
+        }
+    });
+    wx.onMenuShareWeibo({
+        title: '第一届货代高手等级考试', // 分享标题
+        desc: '做题嘞，最重要的就是开心(^ω^)', // 分享描述
+        link: 'http://www.sofreight.com/Static/Weixin/index.html', // 分享链接
+        imgUrl: 'img/share.jpg', // 分享图标
+        success: function () { 
+           // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+    });
+    wx.onMenuShareQZone({
+        title: '第一届货代高手等级考试', // 分享标题
+        desc: '做题嘞，最重要的就是开心(^ω^)', // 分享描述
+        link: 'http://www.sofreight.com/Static/Weixin/index.html', // 分享链接
+        imgUrl: 'img/share.jpg', // 分享图标
+        success: function () { 
+           // 用户确认分享后执行的回调函数
+        },
+        cancel: function () { 
+            // 用户取消分享后执行的回调函数
+        }
+    });
+});
+
+wx.error(function(res){
+    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+    
+});
+
+
+</script>	
+</head>
+<body>
+<div style='display:none;'>
+<img src='http://www.sofreight.com/resource/wx/img/share.jpg' />
+</div>
+<section class="page welcome current" id="welcome">
+    <div class="percent">
+        <span>1%</span>
+    </div>
+    <div class="bar">
+        <div class="bar-content">
+            <span></span>
+            <p></p>
+        </div>
+        <em></em>
+        <cite></cite>
+    </div>
+</section>
+<section class="page index current" id="index">
+    <div class="theme">
+        <div class="theme-content"></div>
+    </div>
+    <div class="shiper">
+        <div class="shiper-content"></div>
+    </div>
+    <div class="ship"></div>
+    <div class="begin">
+        <span></span>
+    </div>
+</section>
+<section class="page main current" id="main">
+    <div class="blackboard">
+        <div class="blackboard-content">
+            <p>1、下面图中是哪种危险品的标志？</p>
+            <p>2、装有危险货物的集装箱，最少需几面“危险货物”类别标志？</p>
+            <p>3、国际海上货物运输保险业务中，哪种属共同海损？</p>
+            <p>4、FOB是哪个贸易术语的缩写？</p>
+            <p>5、萌萌哒哈士奇入境，你打算用哪种集装箱装运（活的哦）？</p>
+            <p>6、if you are the seller,which trade term would you like to choose？</p>
+            <p>7、所有危险品货物的标志上的符号、文字和号码都要用黑色表示</p>
+            <p>8、鹿特丹是欧地线上的港口</p>
+            <p>9、客户找你运一批货物，你知道那是“僵尸肉”，你接这单吗？</p>
+            <p>10、请问这是哪个著名海运界公众号的标志</p>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-content">
+            <div class="card-list card01 card-l-list">
+                <h4>选择题</h4>
+                <div class="card-img"></div>
+                <ul class="card-question">
+                    <li><em></em>毒药<span></span><cite></cite></li>
+                    <li><em></em>化学品<span></span><cite></cite></li>
+                    <li><em></em>炸弹<span></span><cite></cite></li>
+                    <li><em></em>其他<span></span><cite></cite></li>
+                </ul>
+            </div>
+            <div class="card-list card02 card-s-list">
+                <h4>选择题</h4>
+                <ul class="card-question">
+                <li><em></em>2面<span></span><cite></cite></li>
+                    <li><em></em>4面<span></span><cite></cite></li>
+                    <li><em></em>8面<span></span><cite></cite></li>
+                    <li><em></em>没有规定<span></span><cite></cite></li>
+                </ul>
+            </div>
+            <div class="card-list card03 card-s-list">
+                <h4>选择题</h4>
+                <ul class="card-question">
+                    <li><em></em>暴雨所致货物损失<span></span><cite></cite></li>
+                    <li><em></em>船舶碰撞所致货物损失<span></span><cite></cite></li>
+                    <li><em></em>失火所致货物损失<span></span><cite></cite></li>
+                    <li><em></em>救火所致货物损失<span></span><cite></cite></li>
+                </ul>
+            </div>
+            <div class="card-list card04 card-s-list">
+                <h4>选择题</h4>
+                <ul class="card-question">
+                    <li><em></em>FREE ON BOARD<span></span><cite></cite></li>
+                    <li><em></em>FREIGHT ON BOARD<span></span><cite></cite></li>
+                    <li><em></em>FREE ON BUSINESS<span></span><cite></cite></li>
+                    <li><em></em>FREE ON BISINESS<span></span><cite></cite></li>
+                </ul>
+            </div>
+            <div class="card-list card05 card-s-list">
+                <h4>选择题</h4>
+                <ul class="card-question">
+                    <li><em></em>冷藏集装箱<span></span><cite></cite></li>
+                    <li><em></em>散货箱<span></span><cite></cite></li>
+                    <li><em></em>开边门箱<span></span><cite></cite></li>
+                    <li><em></em>开顶箱<span></span><cite></cite></li>
+                </ul>
+            </div>
+            <div class="card-list card06 card-s-list">
+                <h4>选择题</h4>
+                <ul class="card-question">
+                    <li><em></em>FOB<span></span><cite></cite></li>
+                    <li><em></em>CIF<span></span><cite></cite></li>
+                    <li><em></em>CFR<span></span><cite></cite></li>
+                    <li><em></em>THE OTHERS<span></span><cite></cite></li>
+                </ul>
+            </div>
+            <div class="card-list card07 card-s-list">
+                <h4>判断题</h4>
+                <ul class="card-question">
+                    <li><em></em>YES<span></span><cite></cite></li>
+                    <li><em></em>NO<span></span><cite></cite></li>
+                </ul>
+            </div>
+            <div class="card-list card08 card-s-list">
+                <h4>判断题</h4>
+                <ul class="card-question">
+                    <li><em></em>YES<span></span><cite></cite></li>
+                    <li><em></em>NO<span></span><cite></cite></li>
+                </ul>
+            </div>
+             <div class="card-list card09 card-s-list">
+                <h4>判断题</h4>
+                <ul class="card-question">
+                    <li><em></em>YES<span></span><cite></cite></li>
+                    <li><em></em>NO<span></span><cite></cite></li>
+                </ul>
+            </div>
+            <div class="card-list card10  card-m-list" style="display:block;">
+                <h4>附加题 </h4>
+                <div class="card-img"></div>
+                <ul class="card-question">
+                    <li><em></em>南美海贼王<span></span><cite></cite></li>
+                    <li><em></em>美国船长<span></span><cite></cite></li>
+                    <li><em></em>货代上海滩<span></span><cite></cite></li>
+                    <li><em></em>我爱查运价<span></span><cite></cite></li>
+                </ul>
+            </div>
+            <div class="card-content-bg01"></div>
+            <div class="card-content-bg02"></div>
+        </div>
+    </div>
+    <div class="person person-r person-r-1"></div>
+    <div class="person person-w person-w-1"></div>
+    <div class="person person-r person-r-2"></div>
+    <div class="person person-w person-w-2"></div>
+    <div class="person person-r person-r-3"></div>
+    <div class="person person-w person-w-3"></div>
+    <div class="person person-r person-r-4"></div>
+    <div class="person person-w person-w-4"></div>
+    <div class="person person-r person-r-5"></div>
+    <div class="person person-w person-w-5"></div>
+    <div class="person person-r person-r-6"></div>
+    <div class="person person-w person-w-6"></div>
+    <div class="person person-r person-r-7"></div>
+    <div class="person person-w person-w-7"></div>
+    <div class="person person-r person-r-8"></div>
+    <div class="person person-w person-w-8"></div>
+    <div class="person person-r person-r-9"></div>
+    <div class="person person-w person-w-9"></div>
+    <div class="person person-r person-r-10"></div>
+    <div class="person person-w person-w-10"></div>
+    
+    <div class="answer answer-r answer-r-1"></div>
+    <div class="answer answer-w answer-w-1"></div>
+    <div class="answer answer-r answer-r-2"></div>
+    <div class="answer answer-w answer-w-2"></div>
+    <div class="answer answer-r answer-r-3"></div>
+    <div class="answer answer-w answer-w-3"></div>
+    <div class="answer answer-r answer-r-4"></div>
+    <div class="answer answer-w answer-w-4"></div>
+    <div class="answer answer-r answer-r-5"></div>
+    <div class="answer answer-w answer-w-5"></div>
+    <div class="answer answer-r answer-r-6"></div>
+    <div class="answer answer-w answer-w-6"></div>
+    <div class="answer answer-r answer-r-7"></div>
+    <div class="answer answer-w answer-w-7"></div>
+    <div class="answer answer-r answer-r-8"></div>
+    <div class="answer answer-w answer-w-8"></div>
+    <div class="answer answer-r answer-r-9"></div>
+    <div class="answer answer-w answer-w-9"></div>
+    <div class="answer answer-r answer-r-10"></div>
+    <div class="answer answer-w answer-w-10"></div>
+
+    <div class="next">
+        <span></span>
+        <em></em>
+    </div>
+</section>
+<section class="page score current" id="score">
+    <div class="score-card">
+        <div class="score-card-content">
+            <h4>本次考试成绩<span>100<em></em></span>分</h4>
+            <p></p>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="score-btn">
+        <span></span>
+        <em></em>
+    </div>
+    <div class="score-follow">
+        <p>关注北美航贸专家</p>
+        <span>微信公众号：<a href="#">美国船长</a></span> 
+    </div>
+    
+</section>
+<script src="js/index.js"></script>	
+<script type="text/javascript">
+
+$(function(){
+     var wx=new SF.Wx();
+      wx.init({welcome:$('#welcome'),index:$('#index'),main:$('#main'),score:$('#score')});    
+});
+
+</script>
+</body>
+</html>
+ 
